@@ -10,18 +10,25 @@ ex.: {a,b,c,d} e valor = 3
 import numpy as np
 from math import floor
 
-def MATRIZ_COMBINA(n):
-    m = np.zeros((2**n, n), dtype=int) #Cria a matriz cheia de zeros com dimensão 2^n x n
-    
-    for i in range(2**n): #linha - como na fórmula passada tinha 2^n-1, mas no python já exclui o último termo, logo apenas colocar 2^n e equivale a 2^n-1 da fórmula
-        for j in range(n): #coluna - como na fórmula passada tinha n-1, mas no python já exclui o último termo, logo apenas colocar n e equivale a n-1 da fórmula
+def MATRIZ_COMBINA(n, lista):
+    tam = len(lista)
+    m = [[0 for _ in range(tam)] for _ in range(2**tam)] # forma a matriz
+    soma = 0
+    lista_resultado = []
+    for i in range(2**tam):
+        for j in range(tam):
             if floor(i / 2**j) % 2 == 0:
-                m[i, j] = 0
+                m[i][j] = 0
             else:
-                m[i, j] = 1
-    
-    return print(m)
+                m[i][j] = lista[j] # cada coluna tem um elemento equivalente a ela, na matriz que antes era 1 agora fica o próprio elemento equivalente
+                soma += 1 # vai somar para cada vez que um elemento aparecer na linha
+        if soma == n: # Compara a ocorrência de elementos que não seja 0 na linha com a quantidade de elementos que é para ter na combinação
+            lista_resultado.append(m[i]) # Coloco os elementos na lista onde vai mostrar as combinações
+        soma = 0 # Zera para soma dá próxima linha
+    lista_sem_zeros = [[elemento for elemento in sublista if elemento != 0] for sublista in lista_resultado] # Retira os zeros da lista
+    return print(lista_sem_zeros)
 
-# Exemplo igual do pdf
-n = 5
-MATRIZ_COMBINA(n)
+# Execução
+lista = str(input("Coloque a lista de elementos: ")).split()
+n = int(input("Digite o número de combinação: "))
+MATRIZ_COMBINA(n, lista)
