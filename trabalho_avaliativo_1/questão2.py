@@ -12,7 +12,7 @@ from math import floor
 
 def MATRIZ_COMBINA(n, lista):
     tam = len(lista)
-    m = [[0 for _ in range(tam)] for _ in range(2**tam)] # forma a matriz
+    m = [[0 for x in range(tam)] for x in range(2**tam)] # forma a matriz
     soma = 0
     lista_resultado = []
     for i in range(2**tam):
