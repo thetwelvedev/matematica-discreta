@@ -7,12 +7,12 @@ Aij = 1, se i / 2^j é ímpar; 0, se i / 2^j é par.
 Vai entrar uma lista e um valor do número de combinações:
 ex.: {a,b,c,d} e valor = 3
 {{a,b,c},{a,b,d},{b,c,d},...}"""
-import numpy as np
+import re
 from math import floor
 
 def MATRIZ_COMBINA(n, lista):
-    tam = len(lista)
-    m = [[0 for x in range(tam)] for x in range(2**tam)] # forma a matriz
+    tam = len(lista) #Dá o tamanho da string
+    m = [[0 for x in range(tam)] for x in range(2**tam)] # forma a matriz / List Comprehension
     soma = 0
     lista_resultado = []
     for i in range(2**tam):
@@ -20,7 +20,7 @@ def MATRIZ_COMBINA(n, lista):
             if floor(i / 2**j) % 2 == 0:
                 m[i][j] = 0
             else:
-                m[i][j] = lista[j] # cada coluna tem um elemento equivalente a ela, na matriz que antes era 1 agora fica o próprio elemento equivalente
+                m[i][j] = lista[j] # cada coluna tem um elemento equivalente a ela, na matriz que antes era 1 agora fica o próprio elemento equivalente(que vai ter uma posição na string)
                 soma += 1 # vai somar para cada vez que um elemento aparecer na linha
         if soma == n: # Compara a ocorrência de elementos que não seja 0 na linha com a quantidade de elementos que é para ter na combinação
             lista_resultado.append(m[i]) # Coloco os elementos na lista onde vai mostrar as combinações
@@ -29,6 +29,7 @@ def MATRIZ_COMBINA(n, lista):
     return print(lista_sem_zeros)
 
 # Execução
-lista = str(input("Coloque a lista de elementos: ")).split()
+lista = str(input("Coloque a lista de elementos: ")) 
+lista_trabalhada = re.sub(r'[ {},;/]','', lista) #elimina qualquer um desses caracteres
 n = int(input("Digite o número de combinação: "))
-MATRIZ_COMBINA(n, lista)
+MATRIZ_COMBINA(n, lista_trabalhada)
