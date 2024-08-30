@@ -6,7 +6,7 @@ A matriz de combinações e a fórmula geratriz são vistas a seguir:
 Aij = 1, se i / 2^j é ímpar; 0, se i / 2^j é par. 
 Vai entrar uma lista e um valor do número de combinações:
 ex.: {a,b,c,d} e valor = 3
-{{a,b,c},{a,b,d},{b,c,d},...}"""
+{{a,b,c},{a,b,d},{a,c,d},{b,c,d}}"""
 import re
 from math import floor
 
