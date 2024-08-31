@@ -1,2 +1,4 @@
 # matematica_discreta
- Matéria do 4 semestre de Ciências da Computação
+ Códigos pertencentes aos trabalhos avaliativos da matéria.
+
+ [] Primeiro trabalho avaliativo
