@@ -12,14 +12,19 @@ def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def formula_PAM4(m):
-    for j in range(0, m+1):
-        a = sum(((-1)**k)*sp.binomial(j,k)*(1-k+j)**m for k in range(0, j+1))
+    for j in range(m+1):
+        a = 0
+        for k in range(0, j+1):
+            a += (((-1)**k) * sp.binomial(j, k) *((1-k+j)**m))
     return a
-
+    
 def formula_PAM5(m):
-    formula_ant = formula_PAM4(m)
-    n = sp.symbols('n')
-    formula = sum(sp.binomial(n,j+1)*formula_ant(j+1) for j in range(0, m+1))
+    n = sp.Symbol('n', integer=True)
+    formula = 0
+    for j in range(m+1):
+        a = formula_PAM4(m)
+        term = sp.binomial(n, j+1)*a
+        formula += term
     return sp.simplify(formula)
 
 
