@@ -10,21 +10,15 @@ import os
 
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
-
-def formula_PAM4(m):
-    for j in range(m+1):
-        a = 0
-        for k in range(0, j+1):
-            a += (((-1)**k) * sp.binomial(j, k) *((1-k+j)**m))
-    return a
     
 def formula_PAM5(m):
     n = sp.Symbol('n', integer=True)
     formula = 0
     for j in range(m+1):
-        a = formula_PAM4(m)
-        term = sp.binomial(n, j+1)*a
-        formula += term
+        #formula_PAM4
+        a = sum(((-1)**k) * sp.binomial(j, k) * ((1-k+j)**m) for k in range(j+1)) #a(m-j) = somatório(j, k = 0)((-1)^k*coeficiente binomial(j,k)*(1-k+j)^m)
+        n_term = sp.binomial(n, j+1)*a #1^^n + 2^n + ... + 3^n = somatório(m, j = 0)(coeficiente binomial(n,j+1)*a(m-j))
+        formula += n_term
     return sp.simplify(formula)
 
 
