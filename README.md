@@ -1,4 +1,4 @@
 # matematica_discreta
 ### Códigos pertencentes aos trabalhos avaliativos da matéria.
- - [ ] Primeiro trabalho avaliativo
- - [ ] Segundo trabalho avaliativo
+ - [x] Primeiro trabalho avaliativo 8/10
+ - [ ] Segundo trabalho avaliativo /10
