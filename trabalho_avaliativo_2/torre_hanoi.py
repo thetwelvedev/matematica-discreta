@@ -75,7 +75,7 @@ class TorreDeHanoi(tk.Tk):
             self.hastes[destino].append(disco)  # Adiciona o disco à haste de destino
             self.mostrar_hastes()  
             self.update()  
-            time.sleep(0.5)  # Pausa para visualização
+            time.sleep(1.5)  # Pausa para visualização
 
 if __name__ == "__main__":  
     app = TorreDeHanoi()  
