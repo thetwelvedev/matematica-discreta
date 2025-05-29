@@ -96,8 +96,8 @@ class TorreDeHanoi(tk.Tk):
             
             self.mostrar_hastes()  
             self.update()  
-            time.sleep(1.0)  # Pausa para visualização
+            time.sleep(0.25)  # Pausa para visualização
 
 if __name__ == "__main__":  
     app = TorreDeHanoi()  
-    app.mainloop()  
+    app.mainloop()
